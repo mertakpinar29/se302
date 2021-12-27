@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #e0f2f1;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.family_tree.Controller">
+   <children>
+      <VBox layoutY="-7.0" prefHeight="806.0" prefWidth="310.0" style="-fx-background-color: #26a69a;">
+         <children>
+            <Pane prefHeight="234.0" prefWidth="309.0">
+               <children>
+
+                  <Label alignment="TOP_LEFT" layoutX="48.0" layoutY="164.0" prefHeight="56.0" prefWidth="207.0" text="FAMILY TREE  " textAlignment="CENTER" textOverrun="CLIP">
+                     <font>
+                        <Font name="Symbol" size="33.0" />
+                     </font>
+                     <effect>
+                        <ColorAdjust brightness="-0.54" contrast="0.45" hue="-0.96" />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </Label>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="87.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@family_tree.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#createButton" prefHeight="55.0" prefWidth="309.0" style="-fx-background-color: #0097A7;" text="CREATE FAMILY TREE">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#importButton" prefHeight="56.0" prefWidth="309.0" style="-fx-background-color: #0097A7;" text="IMPORT FAMILY TREE">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#helpButton" prefHeight="56.0" prefWidth="309.0" style="-fx-background-color: #0097A7;" text="HELP">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#madeByButton" prefHeight="56.0" prefWidth="309.0" style="-fx-background-color: #0097A7;" text="MADE BY" wrapText="true">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <Pane layoutX="309.0" layoutY="82.0" prefHeight="80.0" prefWidth="907.0">
+         <children>
+            <Label layoutY="-14.0" prefHeight="80.0" prefWidth="971.0" style="-fx-background-color: #26a69a;" text="HELP  " textAlignment="CENTER">
+               <font>
+                  <Font name="Times New Roman" size="31.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label alignment="TOP_LEFT" layoutX="309.0" layoutY="695.0" prefHeight="39.0" prefWidth="771.0" text="If you have complaints about the program, feel free the contac us &quot;voimfd@gmail.com&quot;  ☻">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="309.0" layoutY="162.0" prefHeight="55.0" prefWidth="944.0" text=" -&gt;This program builded for create and upgrade the Family Trees. ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="309.0" layoutY="217.0" prefHeight="55.0" prefWidth="971.0" text=" -&gt;Create Family Tree button for a build new family tree ,can add or delete family member from  grandchild ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="309.0" layoutY="257.0" prefHeight="55.0" prefWidth="971.0" text="to grandfather. Then export the Trees to computer.">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="316.0" layoutY="323.0" prefHeight="55.0" prefWidth="971.0" text="-&gt;Import Family Tree button for uprade trees add or delete a person  from saved Trees.">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

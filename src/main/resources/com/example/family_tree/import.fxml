@@ -12,13 +12,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #e0f2f1;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.family_tree.Controller">
+<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #e0f2f1;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.family_tree.Controller">
    <children>
-      <VBox prefHeight="800.0" prefWidth="310.0" style="-fx-background-color: #26a69a;">
+      <VBox prefHeight="600.0" prefWidth="247.0" style="-fx-background-color: #26a69a;">
          <children>
             <Pane prefHeight="234.0" prefWidth="309.0">
                <children>
-                  <Label alignment="TOP_LEFT" layoutX="48.0" layoutY="164.0" prefHeight="56.0" prefWidth="207.0" text="FAMILY TREE  " textAlignment="CENTER" textOverrun="CLIP">
+                  <Label alignment="TOP_LEFT" layoutX="20.0" layoutY="164.0" prefHeight="56.0" prefWidth="207.0" text="FAMILY TREE  " textAlignment="CENTER" textOverrun="CLIP">
                      <font>
                         <Font name="Symbol" size="33.0" />
                      </font>
@@ -29,7 +29,7 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </Label>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="87.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="59.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@family_tree.png" />
                      </image>
@@ -70,24 +70,19 @@
             </Button>
          </children>
       </VBox>
-      <Button layoutX="587.0" layoutY="208.0" mnemonicParsing="false" prefHeight="339.0" prefWidth="339.0" style="-fx-background-color: #e0f2f1;">
+      <Button layoutX="482.0" layoutY="232.0" mnemonicParsing="false" prefHeight="136.0" prefWidth="144.0" style="-fx-background-color: #e0f2f1;">
          <graphic>
-            <ImageView fitHeight="339.0" fitWidth="391.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@import.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Pane layoutX="309.0" layoutY="82.0" prefHeight="80.0" prefWidth="907.0">
-         <children>
-            <Label layoutY="-14.0" prefHeight="80.0" prefWidth="971.0" style="-fx-background-color: #26a69a;" text="IMPORT FAMILY TREE" textAlignment="CENTER">
-               <font>
-                  <Font name="Times New Roman" size="31.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <VBox layoutX="983.0" layoutY="208.0" prefHeight="200.0" prefWidth="100.0" />
+      <Label layoutX="246.0" prefHeight="80.0" prefWidth="554.0" style="-fx-background-color: #26a69a;" text="IMPORT FAMILY TREE" textAlignment="CENTER">
+         <font>
+            <Font name="Times New Roman" size="31.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

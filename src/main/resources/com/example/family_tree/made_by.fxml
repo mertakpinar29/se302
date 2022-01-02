@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #e0f2f1;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.family_tree.Controller">
+<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #e0f2f1;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.family_tree.Controller">
    <children>
-      <VBox layoutY="-7.0" prefHeight="806.0" prefWidth="310.0" style="-fx-background-color: #26a69a;">
+      <VBox layoutY="-7.0" prefHeight="609.0" prefWidth="310.0" style="-fx-background-color: #26a69a;">
          <children>
             <Pane prefHeight="234.0" prefWidth="309.0">
                <children>
@@ -70,39 +70,36 @@
             </Button>
          </children>
       </VBox>
-      <Pane layoutX="309.0" layoutY="82.0" prefHeight="80.0" prefWidth="907.0">
-         <children>
-            <Label layoutY="-14.0" prefHeight="80.0" prefWidth="971.0" style="-fx-background-color: #26a69a;" text="MADE BY" textAlignment="CENTER">
-               <font>
-                  <Font name="Times New Roman" size="31.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
+      <Pane layoutX="309.0" layoutY="82.0" prefHeight="80.0" prefWidth="907.0" />
       <VBox layoutX="983.0" layoutY="208.0" prefHeight="200.0" prefWidth="100.0" />
-      <ImageView fitHeight="284.0" fitWidth="281.0" layoutX="412.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="116.0" fitWidth="120.0" layoutX="473.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@ieu.png" />
          </image>
       </ImageView>
-      <Label layoutX="710.0" layoutY="501.0" prefHeight="45.0" prefWidth="546.0" text="Muhammed Furkan Doğan                 &quot;furkan.dogan@std.izmirekonomi.edu.tr&quot;">
+      <Label layoutX="314.0" layoutY="386.0" prefHeight="45.0" prefWidth="524.0" text="Muhammed Furkan Doğan      &quot;furkan.dogan@std.izmirekonomi.edu.tr&quot;">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="710.0" layoutY="363.0" prefHeight="45.0" prefWidth="546.0" text="Utku Can Sancı                                    &quot;utku.sanci@std.izmirekonomi.edu.tr&quot;">
+      <Label layoutX="318.0" layoutY="255.0" prefHeight="45.0" prefWidth="478.0" text="Utku Can Sancı                        &quot;utku.sanci@std.izmirekonomi.edu.tr&quot;">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="710.0" layoutY="408.0" prefHeight="45.0" prefWidth="546.0" text="Mert Akpınar                                       &quot;mert.akpinar@std.izmirekonomi.edu.tr&quot;">
+      <Label layoutX="318.0" layoutY="298.0" prefHeight="45.0" prefWidth="478.0" text="Mert Akpınar                           &quot;mert.akpinar@std.izmirekonomi.edu.tr&quot;">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="710.0" layoutY="456.0" prefHeight="45.0" prefWidth="546.0" text="Sinan Mert Şener                                &quot;sinan.sener@std.izmirekonomi.edu.tr&quot;">
+      <Label layoutX="314.0" layoutY="343.0" prefHeight="45.0" prefWidth="472.0" text="Sinan Mert Şener                     &quot;sinan.sener@std.izmirekonomi.edu.tr&quot;">
          <font>
             <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="306.0" prefHeight="80.0" prefWidth="495.0" style="-fx-background-color: #26a69a;" text="MADE BY" textAlignment="CENTER">
+         <font>
+            <Font name="Times New Roman" size="31.0" />
          </font>
       </Label>
    </children>

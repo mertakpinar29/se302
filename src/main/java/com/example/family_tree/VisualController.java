@@ -108,6 +108,7 @@ public class VisualController {
                         } catch (ParseException | IOException exception ) {
                             exception.printStackTrace();
                             // show an alert if error occurs
+                            // show an alert if error occurs
                             alert = new Alert(Alert.AlertType.ERROR, exception.getMessage(), ButtonType.OK);
                             alert.show();
                         }

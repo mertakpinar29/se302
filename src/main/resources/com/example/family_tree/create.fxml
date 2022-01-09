@@ -79,7 +79,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label layoutX="246.0" layoutY="-1.0" prefHeight="80.0" prefWidth="554.0" style="-fx-background-color: #26a69a;" text="CREATE NEW FAMILY TREE" textAlignment="CENTER">
+      <Label layoutX="246.0" layoutY="71.0" prefHeight="80.0" prefWidth="555.0" style="-fx-background-color: #26a69a;" text="CREATE NEW FAMILY TREE" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman" size="31.0" />
          </font>

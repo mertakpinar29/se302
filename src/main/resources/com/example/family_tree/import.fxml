@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #e0f2f1;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.family_tree.Controller">
+<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #e0f2f1;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.family_tree.ImportController">
    <children>
       <VBox prefHeight="600.0" prefWidth="247.0" style="-fx-background-color: #26a69a;">
          <children>
@@ -70,19 +70,12 @@
             </Button>
          </children>
       </VBox>
-      <Button layoutX="482.0" layoutY="232.0" mnemonicParsing="false" prefHeight="136.0" prefWidth="144.0" style="-fx-background-color: #e0f2f1;">
-         <graphic>
-            <ImageView fitHeight="150.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@import.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
+      <Button layoutX="482.0" layoutY="232.0" mnemonicParsing="false" prefHeight="136.0" prefWidth="144.0" style="-fx-background-color: #e0f2f1;" />
       <Label layoutX="246.0" prefHeight="80.0" prefWidth="554.0" style="-fx-background-color: #26a69a;" text="IMPORT FAMILY TREE" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman" size="31.0" />
          </font>
       </Label>
+      <Pane fx:id="pane" layoutX="269.0" layoutY="100.0" prefHeight="480.0" prefWidth="505.0" />
    </children>
 </AnchorPane>

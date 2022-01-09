@@ -5,48 +5,64 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
-public class Person implements Serializable {
+public abstract class Person implements Serializable {
     UUID id;
     String firstname;
     String lastname;
     Female mother;
     Male father;
-    boolean isMarried;
     ArrayList<Person> children;
     Date birthDate;
 
-    public Person(String firstname, String lastname, Female mother, Male father, boolean isMarried, Date birthDate) {
+    public Person(String firstname, String lastname, Date birthDate) {
         id = UUID.randomUUID();
         this.firstname = firstname;
         this.lastname = lastname;
-        this.mother = mother;
-        this.father = father;
-        this.isMarried = isMarried;
         this.birthDate = birthDate;
         children = new ArrayList<>();
     }
 
+    public Person getPartner() {
+        return null;
+    }
+
+    public void setPartner(Person person){}
+
+    // mother, father, partner, birth date, id, children
+
     public static class Male extends Person {
         Female partner;
 
-        public Male(String firstname, String lastname, Female mother, Male father, boolean isMarried, Date birthDate) {
-            super(firstname, lastname, mother, father, isMarried, birthDate);
+        public Male(String firstname, String lastname, Date birthDate) {
+            super(firstname, lastname, birthDate);
         }
 
-        public void setPartner(Female partner) {
-            this.partner = partner;
+        @Override
+        public Person getPartner() {
+            return this.partner;
+        }
+
+        @Override
+        public void setPartner(Person person) {
+            this.partner = (Female) person;
         }
     }
 
     public static class Female extends Person{
         Male partner;
 
-        public Female(String firstname, String lastname, Female mother, Male father, boolean isMarried, Date birthDate) {
-            super(firstname, lastname, mother, father, isMarried, birthDate);
+        public Female(String firstname, String lastname, Date birthDate) {
+            super(firstname, lastname, birthDate);
         }
 
-        public void setPartner(Male partner) {
-            this.partner = partner;
+        @Override
+        public Person getPartner() {
+            return this.partner;
+        }
+
+        @Override
+        public void setPartner(Person person){
+            this.partner = (Male) person;
         }
     }
 }

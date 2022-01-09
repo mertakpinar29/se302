@@ -68,52 +68,23 @@ public class Controller {
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initOwner(stage);
 
-        Label information = new Label("You need to enter information about first two members of the family, mother and father.");
-        information.setStyle("-fx-text-fill: red; -fx-font-style: italic");
-
         Label familyNameLabel = new Label("FamilyTree Name");
         TextField familyName = new TextField();
-
-        // mother information
-        Label motherNameLabel = new Label("Mother name");
-        TextField rootMotherName = new TextField();
-        Label motherBirthDateLabel = new Label("Birth date of mother (dd/MM/yyyy)");
-        TextField rootMotherBirthDate = new TextField();
-
-        // father information
-        Label fatherNameLabel = new Label("Father name");
-        TextField rootFatherName = new TextField();
-        Label lastNameLabel = new Label("Last name");
-        TextField lastname = new TextField();
-        Label fatherBirthDateLabel = new Label("Birth date of father (dd/MM/yyyy)");
-        TextField rootFatherBirthDate = new TextField();
 
         Button submitButton = new Button("CREATE");
         // event handler for submit button
         submitButton.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
             // get the values from form
             String familyTreeName = familyName.getText();
-            String motherName = rootMotherName.getText();
-            String motherBirthDate = rootMotherBirthDate.getText();
-            String fatherName = rootFatherName.getText();
-            String fatherBirthDate = rootFatherBirthDate.getText();
-            String fatherLastName = lastname.getText();
+
             // check if there is missing information
-            if(fatherLastName.equals("") || familyTreeName.equals("") || motherName.equals("") || motherBirthDate.equals("") || fatherName.equals("") || fatherBirthDate.equals("")){
+            if(familyTreeName.equals("")){
                 Alert alert = new Alert(Alert.AlertType.WARNING, "All fields of the form must be filled", ButtonType.OK);
                 alert.show();
             }else {
-                Person.Male father;
-                Person.Female mother;
                 try {
-                    // create father and mother objects with given information
-                    // these two objects will be the root elements of the family tree
-                    father = new Person.Male(fatherName, fatherLastName, null, null, true, new SimpleDateFormat("dd/MM/yyyy").parse(fatherBirthDate));
-                    mother = new Person.Female(motherName, fatherLastName, null, null, true, new SimpleDateFormat("dd/MM/yyyy").parse(motherBirthDate));
-                    father.setPartner(mother);
-                    mother.setPartner(father);
                     // creating a FamilyTree object with given information
-                    FamilyTree familyTree = new FamilyTree(familyTreeName, father, mother);
+                    FamilyTree familyTree = new FamilyTree(familyTreeName);
 
                     // write created family tree object to text
                     FileOutputStream f = new FileOutputStream(familyTree.id + ".txt");
@@ -126,13 +97,12 @@ public class Controller {
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Family Tree has been created.", ButtonType.OK);
                     alert.show();
                     dialog.close();
-                } catch (ParseException | IOException exception) {
+                } catch (IOException exception) {
                     exception.printStackTrace();
                     // show an alert if error occurred
                     Alert alert = new Alert(Alert.AlertType.ERROR, exception.getMessage(), ButtonType.OK);
                     alert.show();
                 }
-
             }
         });
 
@@ -141,12 +111,12 @@ public class Controller {
         dialogVBox.setSpacing(10);
         dialogVBox.setAlignment(Pos.CENTER);
         dialogVBox.setPadding(new Insets(10,10,10,10));
-        dialogVBox.getChildren().addAll(information, familyNameLabel, familyName, motherNameLabel, rootMotherName, motherBirthDateLabel, rootMotherBirthDate,
-                fatherNameLabel, rootFatherName, fatherBirthDateLabel, rootFatherBirthDate, lastNameLabel, lastname,  submitButton);
+        dialogVBox.getChildren().addAll( familyNameLabel, familyName, submitButton);
         Scene dialogScene = new Scene(dialogVBox, 500, 450);
         dialog.setScene(dialogScene);
         dialog.show();
     }
+
 }
 
 

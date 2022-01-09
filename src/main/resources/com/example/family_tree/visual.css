@@ -1,0 +1,11 @@
+.male .title {
+    -fx-background-color: #CEE5FF;
+}
+
+.female .title {
+    -fx-background-color: #FFD5F6;
+}
+
+.children .titled-pane .title {
+    -fx-background-color: wheat;
+}

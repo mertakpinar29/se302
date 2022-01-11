@@ -1,8 +1,10 @@
 package com.example.family_tree;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -52,6 +54,22 @@ public class VisualController {
         familyTreeName.setTextAlignment(TextAlignment.CENTER);
 
         Button createMemberButton = new Button("Add new member");
+        Button navigationButton = new Button("Go to Home Screen");
+
+        navigationButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            Parent root = null;
+            try {
+                root = FXMLLoader.load(getClass().getResource("create.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        });
+
         createMemberButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             final Stage dialog = new Stage();
             dialog.initModality(Modality.APPLICATION_MODAL);
@@ -156,6 +174,7 @@ public class VisualController {
         }
         vBox.getChildren().add(familyTreeName);
         vBox.getChildren().add(createMemberButton);
+        vBox.getChildren().add(navigationButton);
         VBox accordionBox = new VBox(accordion);
         vBox.getChildren().add(accordionBox);
     }

@@ -7,11 +7,17 @@ public class VisualFamilyTree {
     Label id;
     Label familyTreeName;
     Button selectButton;
+    Button deleteButton;
 
-    public VisualFamilyTree(Label id, Label familyTreeName, Button selectButton) {
+
+
+
+
+    public VisualFamilyTree(Label id, Label familyTreeName, Button selectButton, Button deleteButton) {
         this.id = id;
         this.familyTreeName = familyTreeName;
         this.selectButton = selectButton;
+        this.deleteButton =deleteButton;
     }
 
     public Label getId() {
@@ -36,5 +42,11 @@ public class VisualFamilyTree {
 
     public void setSelectButton(Button selectButton) {
         this.selectButton = selectButton;
+    }
+    public Button getDeleteButton() {
+        return deleteButton;
+    }
+    public void setDeleteButton(Button deleteButton) {
+        this.deleteButton = deleteButton;
     }
 }

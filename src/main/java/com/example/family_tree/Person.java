@@ -11,6 +11,7 @@ public abstract class Person implements Serializable {
     String lastname;
     Female mother;
     Male father;
+    ArrayList<Person> siblings;
     ArrayList<Person> children;
     Date birthDate;
 
@@ -20,6 +21,7 @@ public abstract class Person implements Serializable {
         this.lastname = lastname;
         this.birthDate = birthDate;
         children = new ArrayList<>();
+        siblings = new ArrayList<>();
     }
 
     public Person getPartner() {

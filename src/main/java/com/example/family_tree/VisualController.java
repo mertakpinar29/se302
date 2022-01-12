@@ -83,7 +83,7 @@ public class VisualController {
             TextField firstNameInput = new TextField();
             Label lastNameLabel = new Label("Last Name");
             TextField lastNameInput = new TextField();
-            Label birthDateLabel = new Label("Birth Date");
+            Label birthDateLabel = new Label("Birth Date (dd/MM/yyyy)");
             TextField birthDateInput = new TextField();
 
             Label genderLabel = new Label("Gender");
@@ -179,6 +179,47 @@ public class VisualController {
         vBox.getChildren().add(accordionBox);
     }
 
+    public TitledPane drawSiblingsPane(Person sibling) {
+        VBox personInformationBox = new VBox();
+        personInformationBox.setSpacing(20);
+
+        Text id = new Text("id: " + sibling.id);
+        Text mother = new Text("Mother: No Data");
+        Text father = new Text("Father: No Data");
+
+        if(sibling.mother != null) {
+            mother.setText("Mother: " + sibling.mother.firstname.toUpperCase()
+                    + " " + sibling.mother.lastname.toUpperCase());
+        }
+        if(sibling.father != null) {
+            father.setText("Father: " + sibling.father.firstname.toUpperCase()
+                    + " " + sibling.father.lastname.toUpperCase());
+        }
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Text birthDate = new Text("Birth date: " + dateFormat.format(sibling.birthDate));
+
+        Label childrenLabel = new Label("Children");
+        Accordion childrenAccordion = new Accordion();
+        childrenAccordion.getStyleClass().add("children");
+        if (sibling.children.size() > 0) {
+            for(int i = 0; i < sibling.children.size(); i++) {
+                TitledPane child = drawPersonPane(sibling.children.get(i), false);
+                childrenAccordion.getPanes().add(child);
+            }
+        } else {
+            TitledPane noChildren = new TitledPane("Children", new Label("Children data not found."));
+            childrenAccordion.getPanes().add(noChildren);
+        }
+        personInformationBox.getChildren().addAll(id, mother, father, birthDate, childrenLabel, childrenAccordion);
+        TitledPane siblingPane = new TitledPane(sibling.firstname.toUpperCase() + " " + sibling.lastname.toUpperCase(), personInformationBox);
+        if(sibling instanceof Person.Male) {
+            siblingPane.getStyleClass().add("male");
+        }else {
+            siblingPane.getStyleClass().add("female");
+        }
+        return siblingPane;
+    }
+
     public TitledPane drawPartnerPane(Person partner){
         VBox personInformationBox = new VBox();
         personInformationBox.setSpacing(20);
@@ -212,7 +253,22 @@ public class VisualController {
             TitledPane noChildren = new TitledPane("Children", new Label("Children data not found."));
             childrenAccordion.getPanes().add(noChildren);
         }
-        personInformationBox.getChildren().addAll(id, mother, father, birthDate, childrenLabel, childrenAccordion);
+
+        // show list of children inside of accordion
+        Label siblingLabel = new Label("Siblings:");
+        Accordion siblingsAccordion = new Accordion();
+        childrenAccordion.getStyleClass().add("children");
+        if(partner.siblings.size() > 0) {
+            for(int i = 0; i < partner.siblings.size(); i++) {
+                TitledPane sibling = drawPersonPane(partner.siblings.get(i), false);
+                siblingsAccordion.getPanes().add(sibling);
+            }
+        }else {
+            TitledPane noSibling = new TitledPane("Siblings", new Label("Sibling data not found."));
+            siblingsAccordion.getPanes().add(noSibling);
+        }
+
+        personInformationBox.getChildren().addAll(id, mother, father, birthDate, childrenLabel, childrenAccordion, siblingLabel, siblingsAccordion);
         TitledPane partnerPane = new TitledPane("Partner: " + partner.firstname.toUpperCase() + " " + partner.lastname.toUpperCase(), personInformationBox);
         if(partner instanceof Person.Male) {
             partnerPane.getStyleClass().add("male");
@@ -286,7 +342,8 @@ public class VisualController {
                         // checking if current member's partner is current female, if so this female object won't show up in the table.
                         if((currentMember.getPartner() != null && currentMember.getPartner().equals(currentFemale)
                                 || currentFemale instanceof Person.Male
-                                || currentMember.equals(currentFemale))) {
+                                || currentMember.equals(currentFemale)
+                                || currentMember.siblings.contains(currentFemale))) {
                             continue;
                         }
 
@@ -300,8 +357,18 @@ public class VisualController {
                             // set current member's mother
                             currentFamilyTree.members.get(indexOfCurrentMember).mother = (Person.Female) currentFemale;
 
+                            for(int j = 0; j < currentFemale.children.size(); j++){
+                                Person currentChildren = currentFemale.children.get(j);
+
+                                if(!currentMember.siblings.contains(currentChildren)) {
+                                    currentMember.siblings.add(currentChildren);
+                                    currentChildren.siblings.add(currentMember);
+                                }
+                            }
+
                             // add current member to mother's children list
                             currentFamilyTree.members.get(indexOfMother).children.add(currentMember);
+
 
                             // After the changes write it to text
                             try {
@@ -398,7 +465,8 @@ public class VisualController {
                         if((currentMember.getPartner() != null && currentMember.getPartner().equals(currentMale)
                                 || currentMale instanceof Person.Female
                                 || currentMember.equals(currentMale))
-                                || currentMember.children.contains(currentMale)) {
+                                || currentMember.children.contains(currentMale)
+                                || currentMember.siblings.contains(currentMale)) {
                             continue;
                         }
 
@@ -406,13 +474,22 @@ public class VisualController {
                         selectButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
                             // first get the index of the current member
                             int indexOfCurrentMember = currentFamilyTree.members.indexOf(currentMember);
-                            // get the index of the mother
+                            // get the index of the father
                             int indexOfFather = currentFamilyTree.members.indexOf(currentMale);
 
-                            // set current member's mother
+                            for(int j = 0; j < currentMale.children.size(); j++){
+                                Person currentChildren = currentMale.children.get(j);
+
+                                if(!currentMember.siblings.contains(currentChildren)) {
+                                    currentMember.siblings.add(currentChildren);
+                                    currentChildren.siblings.add(currentMember);
+                                }
+                            }
+
+                            // set current member's father
                             currentFamilyTree.members.get(indexOfCurrentMember).father = (Person.Male) currentMale;
 
-                            // add current member to mother's children list
+                            // add current member to father's children list
                             currentFamilyTree.members.get(indexOfFather).children.add(currentMember);
 
                             // After the changes write it to text
@@ -575,12 +652,25 @@ public class VisualController {
         Label motherLabel = new Label("Mother");
         Label fatherLabel = new Label("Father");
         Label childrenLabel = new Label("Children");
+        Label siblingsLabel = new Label("Siblings");
+
+        Accordion siblingAccordion = new Accordion();
+        siblingAccordion.getStyleClass().add("children");
+        if(currentMember.siblings.size() > 0) {
+            for(int i = 0; i < currentMember.siblings.size(); i++) {
+                TitledPane sibling = drawSiblingsPane(currentMember.siblings.get(i));
+                siblingAccordion.getPanes().add(sibling);
+            }
+        } else {
+            TitledPane noSibling = new TitledPane("Siblings", new Label("Sibling data not found"));
+            siblingAccordion.getPanes().add(noSibling);
+        }
 
 
         if(drawParents) {
-            personInformationBox.getChildren().addAll(id, birthDate, partnerAccordion, childrenLabel, childrenAccordion, motherLabel, motherAccordion, fatherLabel, fatherAccordion);
+            personInformationBox.getChildren().addAll(id, birthDate, partnerAccordion, childrenLabel, childrenAccordion, siblingsLabel, siblingAccordion, motherLabel, motherAccordion, fatherLabel, fatherAccordion);
         } else {
-            personInformationBox.getChildren().addAll(id, birthDate, partnerAccordion, childrenLabel, childrenAccordion);
+            personInformationBox.getChildren().addAll(id, birthDate, partnerAccordion, childrenLabel, childrenAccordion, siblingsLabel, siblingAccordion);
         }
 
 

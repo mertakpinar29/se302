@@ -76,13 +76,9 @@ public class ImportController {
                         try {
                             finalInput.close();
                             file.delete();
-
-
                         }
                         catch (Exception e) {
-
                             e.printStackTrace();
-
                         };
                         tableView.getItems().removeAll(tableView.getSelectionModel().getSelectedItems());
                         Parent root = null;
